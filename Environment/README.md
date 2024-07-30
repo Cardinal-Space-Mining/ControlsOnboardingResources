@@ -18,3 +18,6 @@ To keep development similar to how it will be run on the robot, we will be setti
 During the 23-24 season, we used ROS2 Humble since it will receive long-term support (until 2027), but we will most likely be changing to ROS2 Jazzy (note: ROS2 Jazzy is for Ubuntu 24.04 version or newer).
 
 To install ROS2 Jazzy, follow the instructions found at: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html. If you wish, you can also do the examples at the end of the installation instructions.
+
+### To use and create ROS projects you will need `colcon`
+To install `colcon`, open a Ubuntu Terminal and run `sudo apt install python3-colcon-common-extensions`. You will need to also enter `y` to confirm install.

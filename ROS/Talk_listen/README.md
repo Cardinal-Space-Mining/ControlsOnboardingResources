@@ -9,10 +9,13 @@ Preface: if the command `ros2` is not found you need to source the ros setup fil
 1. In the first terminal run `ros2 run demo_nodes_cpp talker`. This will start the first demo node sending a message. 
 
 ![talker result](talker.png)
+
 2. In the second terminal run `ros2 run demo_nodes_cpp listener`. This node is listening for messages from the talker node. If no messages are being received, start or restart talker node.
 
 ![listener result](listener.png)
+
 3. To view a graph of the nodes communicating, run `rqt_graph`. This will display an interactive menu of the nodes currently running and how they are communicating.
+
 ![graph of active nodes](graph.png)
 
 4. To stop nodes, use `Ctrl + C` the standard way to cancel running programs in the terminal.

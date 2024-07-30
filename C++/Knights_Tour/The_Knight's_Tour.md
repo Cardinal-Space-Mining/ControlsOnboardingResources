@@ -1,4 +1,4 @@
-The Knight's Tour
+# The Knight's Tour
 Borrowed from COMS 327 S24 taught by Jeremy Sheaffer
 See this Wikipedia article about the Knight’s Tour problem: http://en.wikipedia.org/wiki/Knight%27s tour. 
 Finding all directed, open tours on a standard, 8 × 8 chessboard is computationally intractable. 

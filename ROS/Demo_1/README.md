@@ -5,6 +5,8 @@ You will need 2 Ubuntu terminals open to complete this Demo. Please make sure al
 
 **The `solution` directory contains the solutions for all edited files. We encourage you follow along with the steps provided**
 
+Inspiration and development of this demo: https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html
+
 ## Setup
 1. To start ROS program, create a new directory: `mkdir demo1_ws` then enter workspace with `cd demo1_ws`
 2. Create a `src` directory inside `demo1_ws` using `mkdir src`. Then using `cd` move into the src directory

@@ -1,6 +1,8 @@
 # ROS2 Talking and Listening Demo
 This is a brief demo providing insight into how ROS Nodes and Services work. You will need to have ROS2 installed to complete this example (note: Provided pictures are from Ubuntu 24.04 in WSL2). 
 
+In Demo 1, you will build your own version of this exact tutorial to learn about how it works functionally.
+
 To complete this example, you will need to have **atleast 2** terminals open. One terminal will be the talker, sending message and the second a receiving node.
 
 ## Demo/Example

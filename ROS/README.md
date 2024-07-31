@@ -2,7 +2,7 @@
 ## Components in ROS
 ROS is built around two main components: `Nodes` and `Services`. These components work together to create a robust system where multiple subsystems can communicate and process information efficiently and in a controlled manner.
 
-For an example, the Talker/Listener Demo can be used to describe Nodes and Services. If you wish to run visit `Talk_listen/`
+For an example, the Talker/Listener Demo can be used to describe Nodes and Services. If you wish to run visit `Talk_listen/`.
 
 ### Nodes
 In ROS, each Node is an individual program that runs on a robot. You can think of a Node as a specific subsystem, such as a motor control system, sensor input system, data analysis system, or decision-making system. Another way to think of a Node is as a worker, where each worker has a specific job, but a collection of workers together creates a product.
@@ -17,3 +17,6 @@ If you’re familiar with Linux, you might know that there’s a way to run this
 
 ## Examples and Tutorials
 In this directory will be many different tutorials and challenges to complete to learn how to use ROS and examples of how are system may work.
+
+### Demo 1
+In demo 1 you will build a subscriber/publisher "Hello World!" program. The publisher will continue to send messages saying "Hello World!" with a counter. The subsciber will then receive the message and print to console. This is a simple rudimentary communication method that is a common tutorial.

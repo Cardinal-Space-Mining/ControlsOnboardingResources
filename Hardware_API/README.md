@@ -1,7 +1,7 @@
 # Pheonix API and Hardware
 In previous years, we used the Pheonix v5 API commonly found in First Robotics Systems. They recently in the past 2 years updated to `Pheonix 6 API`. That is what we now will use primarily. These API's are built for the motor controllers that we use.
 
-Our programs using this API ran on RoboRIO systems. We are currently switching away to Canivores and/or Canable. The Canable is a open source version of the Carnivore. 
+Our programs using this API ran on RoboRIO systems. We are currently switching away to Canivores and/or Canable. The Canable is a open source version of the Canivore. 
 
 No matter which CAN device we use of the 3, they all interface with our TalonFX's and Talon SRX's.
 

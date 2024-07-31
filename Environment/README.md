@@ -21,3 +21,16 @@ To install ROS2 Jazzy, follow the instructions found at: https://docs.ros.org/en
 
 ### To use and create ROS projects you will need `colcon`
 To install `colcon`, open a Ubuntu Terminal and run `sudo apt install python3-colcon-common-extensions`. You will need to also enter `y` to confirm install.
+
+### Install/find ROS dependencies (rosdep)
+While building ROS projects, certain dependencies/packages may need to be installed in your project. To do this, you will need to install `rosdep`.
+
+1. In a Ubuntu terminal run: `sudo apt-get install python3-rosdep`
+2. Initialize & update rosdep: `sudo rosdep init` and `rosdep update`
+3. Since we will be using ROS2 Jazzy, a simple way for rosdep to function without repetitively running the same command, we will add `export ROS_DISTRO=jazzy` to our .bashrc file. Open using nano or vim the .bashrc file `nano ~/.bashrc` or `vim ~/.bashrc` and append `export ROS_DISTRO=jazzy` to the end of the file. Then save and exit file. Now, anytime you open a new Ubuntu terminal it will be configured to run ROS2 Jazzy.
+
+
+## Sources (not in order/complete)
+rosdep: https://docs.ros.org/en/humble/Tutorials/Intermediate/Rosdep.html#rosdep-installation
+
+ROS2 jazzy: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html

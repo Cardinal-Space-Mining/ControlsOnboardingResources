@@ -170,3 +170,6 @@ install(TARGETS
 4. In 1 terminal run: `ros2 run cpp_hello_world talker` to start the talking node.
 5. In the second terminal run: `ros2 run cpp_hello_world listener` to start the listening node. It should start receiving messages from the talker node.
 6. (Optional) If you wish to view a diagram of the nodes running, open a third terminal and run: `rqt_graph`
+
+## Extra Credit
+If you wish to challenge yourself more in this demo, change the code such that, when the subscriber receives a message, they send a response to the publisher. Note, if you pursue this challenge you will need to edit **both** `publisher.cpp` and `subscriber.cpp`.

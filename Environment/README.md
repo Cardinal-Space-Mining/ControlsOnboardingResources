@@ -34,3 +34,5 @@ While building ROS projects, certain dependencies/packages may need to be instal
 rosdep: https://docs.ros.org/en/humble/Tutorials/Intermediate/Rosdep.html#rosdep-installation
 
 ROS2 jazzy: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html
+
+CANivore: https://pro.docs.ctr-electronics.com/en/latest/docs/installation/installation-nonfrc.html

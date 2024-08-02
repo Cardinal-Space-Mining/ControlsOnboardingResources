@@ -5,3 +5,5 @@ The premise of the demo is for the chassis/robot to navigate a predefined course
 
 ### References
 https://github.com/vanderbiltrobotics/ros_phoenix/tree/foxy
+
+https://github.com/CrossTheRoadElec/Phoenix6-Linux-Example

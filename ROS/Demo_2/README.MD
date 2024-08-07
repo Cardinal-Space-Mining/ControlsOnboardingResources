@@ -1,9 +1,9 @@
-# Fuzzyball - Autonomated
-In this demo, you will create a ROS program to control the test chassis/robot autonomously. This demo is a much more basic version of how our competition robot will function. In Lunabotics, you can score more points for your robot running autonomously using many sensors including lidar and cameras. We will not include these into the demo as they can be complicated and can be fragile/expensive.
+# Fuzzyball - Teleoperated
 
-The premise of the demo is for the chassis/robot to navigate a predefined course/objectives autonomously. As we do not have a predesigned course, there will **not** be a solution, but instead you will be provided a template to complete this challenge. This will provide a real sense of how we work designing and programming our package for competition.
+**THIS IS A WORK IN PROGRESS DEMO (NOT COMPLETED)**
 
-### References
-https://github.com/vanderbiltrobotics/ros_phoenix/tree/foxy
+The goal for this Demo is to create a ROS program using the Phoenix 6 API such that using a joystick controller you can drive the test chassis around. Also in this demo, you will/should learn how to collect and log data throughout your run. This is crucial for our club, during our runs and tests we collect data regarding current, temperatures, etc... that we can analyze to determine if there are any issues and how we could fix them. In the case of a motor going into thermal shutdown we can analyze how this happened and normally current is involved.
 
-https://github.com/CrossTheRoadElec/Phoenix6-Linux-Example
+In this demo, you will create a ROS program to control the test chassis/robot with a controller. In standard practice for our club, we will use a Logitch controller. This form of control is called Teleoperated or Teleop for short. In the Lunabotics competition we are allowed to control our robot with this system. Although we will lose points for this.
+
+There will **not** be a solution, but instead you will be provided a template to complete this challenge. This will provide a real sense of how we work designing and programming our package for competition.

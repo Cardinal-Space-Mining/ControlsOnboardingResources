@@ -12,24 +12,44 @@
 #include "ctre/phoenix6/TalonFX.hpp"
 #include "custom_msg/msg/motor_ctrl.hpp"
 
-// #include "ctre/Phoenix.h"
-
 using namespace ctre::phoenix6;
 
 using TalonFX = ctre::phoenix6::hardware::TalonFX;
+using std::placeholders::_1;
 
 class Robot : public rclcpp::Node {
     public:
+        Robot() : Node("robot") {
+            rec_command = this->create_subscription<custom_msg::msg::MotorCtrl>(
+                "topic", 10, std::bind(&Robot::topic_callback, this, _1)
+            );
+        }
 
-    
     private:
-        std::vector<std::unique_ptr<TalonFX>> m_motors;
-        std::vector<
-            std::shared_ptr<rclcpp::Subscription<custom_msg::msg::MotorCtrl>>>
-        m_motor_subs;
+        // Name/serialnumber/SocketCAN interface of Canivore/Canible
+        // using "*" to select any, dont use this
+        static constexpr char const *CANBUS = "*";
+
+        TalonFX left_track {0, CANBUS};
+        TalonFX right_track {1, CANBUS}; 
+
+        void topic_callback(const custom_msg::msg::MotorCtrl::SharedPtr msg) const {
+            RCLCPP_INFO(this->get_logger(), "I heard: '%d'", msg->mode);
+        }    
+
+        rclcpp::Subscription<custom_msg::msg::MotorCtrl>::SharedPtr rec_command;
+
+        
+
 };
 
 int main(int argc, char** argv) {
     rclcpp::init(argc, argv);
     
+    auto node = std::make_shared<Robot>();
+
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+
+    return 0;
 }

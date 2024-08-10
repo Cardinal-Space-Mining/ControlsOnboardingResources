@@ -23,7 +23,9 @@ class Controller : public rclcpp::Node {
     private:
         void timer_callback() {
             auto message = custom_msg::msg::MotorCtrl();
+            message.id = 0;
             message.mode = 0;
+            message.value = 0;
             RCLCPP_INFO(this->get_logger(), "Published: '%d'", message.mode);
             send_command->publish(message);
         }

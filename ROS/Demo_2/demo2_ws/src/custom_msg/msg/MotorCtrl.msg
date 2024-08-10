@@ -9,5 +9,6 @@ int8 MOTION_PROFILE_ARC = 10
 int8 MUSIC_TONE = 13
 int8 DISABLED = 15
 
+int8 id
 int8 mode
 float64 value

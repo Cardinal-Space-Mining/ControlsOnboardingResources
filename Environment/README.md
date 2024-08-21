@@ -3,6 +3,8 @@ Our robot runs on Ubuntu Linux 22.04 or newer. It is recommended that you have a
 
 As most current members use Windows as their main operating system, we often use WSL2 or Windows Subsystem for Linux 2 as our primary terminal and interface to run/build code locally.
 
+This is a brief Environment Introduction. For a more in depth and complete setup Refer to: https://github.com/Cardinal-Space-Mining/CSMWiki/tree/main/EnviromentSetup
+
 ## VS Code (May not need due to new hardare)
 On the controls team, we primarily use VS Code as our IDE/Code editor. The versatility it provides is the main reason it is used. We use a specific version of VS Code because there is a custom version that allows for easier project development with features specific to our motor controllers. We use both Phoenix5 and Phoenix6 APIs in our project.
 

@@ -10,4 +10,4 @@ This will be a very basic implementation project. In our development, some pract
 
 There will **not** be a solution, but instead you will be provided a template to complete this challenge. This will provide a real sense of how we work designing and programming our package for competition.
 
-Note: It is encouraged to use header files (.h/.hpp), this will not be included in this Demo. Therefore, we encourage you to learn about and how to use header files.
+Note: It is encouraged to use header files (.h/.hpp), these will not be included in this Demo. Therefore, we encourage you to learn about and how to use header files.

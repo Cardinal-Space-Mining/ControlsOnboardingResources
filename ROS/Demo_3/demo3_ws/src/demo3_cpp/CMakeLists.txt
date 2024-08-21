@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(demo2_cpp)
+project(demo3_cpp)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -17,20 +17,22 @@ find_package(rclcpp REQUIRED)
 find_package(custom_msg REQUIRED)
 find_package(phoenix6 REQUIRED)
 
-add_executable(user_control src/user_control.cpp)
-ament_target_dependencies(user_control rclcpp custom_msg)
+add_executable(path_control src/path_control.cpp)
+ament_target_dependencies(path_control rclcpp custom_msg)
 
 install(TARGETS
-  user_control
+  path_control
   DESTINATION lib/${PROJECT_NAME})
 
 add_executable(can_control src/phoenix.cpp)
 ament_target_dependencies(can_control rclcpp custom_msg phoenix6)
 
 install(TARGETS
-  user_control
+  path_control
   can_control
   DESTINATION lib/${PROJECT_NAME})
+
+target_compile_features(can_control PUBLIC cxx_std_20)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

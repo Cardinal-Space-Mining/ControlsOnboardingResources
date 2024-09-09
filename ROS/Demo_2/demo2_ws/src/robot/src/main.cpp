@@ -13,6 +13,7 @@
 #define Phoenix_No_WPI // remove WPI dependencies
 #include "ctre/phoenix6/TalonFX.hpp"
 #include "ctre/phoenix/export.h"
+#include "ctre/phoenix6/unmanaged/Unmanaged.hpp"
 
 #include "custom_types/msg/talon_ctrl.hpp"
 #include "custom_types/msg/talon_info.hpp"
@@ -23,37 +24,58 @@ using namespace std::chrono_literals;
 using TalonFX = ctre::phoenix6::hardware::TalonFX;
 using std::placeholders::_1;
 
-struct MotorInfo
+namespace constants
 {
-
-    const char * motor_name;
-    int motor_id;
-    enum class MotorType
-    {
-        TalonFX
-    };
-    MotorType type;
-};
+static const std::string INTERFACE = "can0";
+} // namespace constants
 
 class Robot : public rclcpp::Node {
 
     public:
-        Robot() : Node("robot") {
-            right_track_ctrl = this->create_subscription<custom_types::msg::TalonCtrl>(
-                "right_track_ctrl", 10, std::bind(&Robot::execute_ctrl, this, _1)
-            );
+        Robot() : Node("robot")
+        , heartbeat_sub(this->create_subscription<std_msgs::msg::Int32>(
+            "heartbeat", 10, [](const std_msgs::msg::Int32 &msg)
+            { ctre::phoenix::unmanaged::FeedEnable(msg.data); })) 
+        , info_timer(
+            this->create_wall_timer(100ms, [this]() { this->info_periodic(); }))
+
+        , track_right_ctrl(this->create_subscription<custom_types::msg::TalonCtrl>(
+            "track_right_ctrl", 10, [this](const custom_types::msg::TalonCtrl &msg) 
+            { execute_ctrl(this->track_right, msg); }))
+            
+        , track_left_ctrl(this->create_subscription<custom_types::msg::TalonCtrl>(
+            "track_left_ctrl", 10, [this](const custom_types::msg::TalonCtrl &msg)
+            { execute_ctrl(this->track_left, msg); }))
+        {
+
+            std::array<std::reference_wrapper<TalonFX>, 2> motors = {
+                {track_right, track_left}};
+
+            for (auto &motor : motors) {
+                config_talonfx(motor);
+            }
+
+            RCLCPP_DEBUG(this->get_logger(), "Initialized Node");
         }
 
     private:
-        void execute_ctrl(const custom_types::msg::TalonCtrl::SharedPtr msg) const {
-            switch ((int8_t) msg->id) {
-                case 0:
-                    RCLCPP_INFO(this->get_logger(), "Motor id: %d set to: %f", msg->id, msg->value);
-                    m_motors[msg->id].SetControl(ctre::phoenix6::controls::DutyCycleOut(static_cast<float>(msg->value)));
-                    break;
-                default:
-                    RCLCPP_ERROR(this->get_logger(), "Not valid motor id: %d", msg->id);
-            }
+
+        void config_talonfx(TalonFX &motor) {
+            configs::TalonFXConfiguration generic_config{};
+
+            generic_config.Slot0.kP = 0.0;
+            generic_config.Slot0.kI = 0.0;
+            generic_config.Slot0.kD = 0.0;
+            generic_config.Slot0.kV = 0.0;
+            generic_config.MotorOutput.NeutralMode = ctre::phoenix6::signals::NeutralModeValue::Brake;
+
+            generic_config.CurrentLimits.StatorCurrentLimitEnable = false;
+
+            motor.GetConfigurator().Apply(generic_config);
+        }
+
+        void execute_ctrl(TalonFX &motor, const custom_types::msg::TalonCtrl &msg) {
+            motor.SetControl(controls::DutyCycleOut(msg.value));
         }
 
         void info_periodic() {
@@ -64,23 +86,16 @@ class Robot : public rclcpp::Node {
         }
     
     private:
-        const std::string m_interface6 = "can0";
-
-        static constexpr MotorInfo motors[] = {
-            {"track_right", 0, MotorInfo::MotorType::TalonFX}
-            // {"track_left", 1, MotorInfo::MotorType::TalonFX}
-        };
-
-        std::vector<TalonFX> m_motors = {
-            {"track_right", m_interface6}
-        };
+        TalonFX track_right{0, constants::INTERFACE};
+        TalonFX track_left{1, constants::INTERFACE};  
     
+    private:
+        rclcpp::Subscription<custom_types::msg::TalonCtrl>::SharedPtr track_right_ctrl;
+        rclcpp::Subscription<custom_types::msg::TalonCtrl>::SharedPtr track_left_ctrl;
+
     private:
         std::shared_ptr<rclcpp::Subscription<std_msgs::msg::Int32>> heartbeat_sub;
         rclcpp::TimerBase::SharedPtr info_timer;
-
-        rclcpp::Subscription<custom_types::msg::TalonCtrl>::SharedPtr right_track_ctrl;
-
         
 };
 
@@ -88,6 +103,9 @@ int main(int argc, char ** argv) {
 
     // Init ROS2 for logging capabilities
     rclcpp::init(argc, argv);
+
+    // ctre::phoenix::unmanaged::FeedEnable(100);
+    ctre::phoenix::unmanaged::LoadPhoenix();
 
     auto node = std::make_shared<Robot>();
 

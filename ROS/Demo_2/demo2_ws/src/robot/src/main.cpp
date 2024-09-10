@@ -79,12 +79,7 @@ class Robot : public rclcpp::Node {
             motor.SetControl(controls::DutyCycleOut(msg.value));
         }
 
-        void info_periodic() {
-            // for (auto & motor : m_motors) {
-            //     auto info = motor.get_info();
-            //     motor.m_info_pub->publish(info);
-            // }
-        }
+        void info_periodic() {}
     
     private:
         TalonFX track_right{0, constants::INTERFACE};

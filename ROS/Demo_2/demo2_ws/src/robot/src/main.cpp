@@ -59,17 +59,18 @@ class Robot : public rclcpp::Node {
         }
 
     private:
-
         void config_talonfx(TalonFX &motor) {
             configs::TalonFXConfiguration generic_config{};
 
-            generic_config.Slot0.kP = 0.0;
-            generic_config.Slot0.kI = 0.0;
-            generic_config.Slot0.kD = 0.0;
-            generic_config.Slot0.kV = 0.0;
+                                                // rps = rotation per second
+            generic_config.Slot0.kP = 0.11;     // error of 1 rps results in 2V output
+            generic_config.Slot0.kI = 0.5;      // error of 1 rps increases output by 0.5V per second
+            generic_config.Slot0.kD = 0.0001;   // change of 1 rps^2 results in 0.0001V output
+            generic_config.Slot0.kV = 0.12;     // Falcon 500 is 500kV motor, 500rpm/V = 8.333 rps/V,
+                                                // 1/8.33 = 0.12 V/rps
             generic_config.MotorOutput.NeutralMode = ctre::phoenix6::signals::NeutralModeValue::Brake;
 
-            generic_config.CurrentLimits.StatorCurrentLimitEnable = false;
+            generic_config.CurrentLimits.StatorCurrentLimitEnable = true;
 
             motor.GetConfigurator().Apply(generic_config);
         }

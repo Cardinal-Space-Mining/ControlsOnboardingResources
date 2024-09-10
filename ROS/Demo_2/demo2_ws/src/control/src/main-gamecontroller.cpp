@@ -30,7 +30,8 @@ private:
     void update_motors() {
         MotorSettings motor_settings =
             this->teleop_state.update(this->robot_state, this->joy);
-        right_track_ctrl->publish(motor_settings.track_right);
+        track_right_ctrl->publish(motor_settings.track_right);
+        track_left_ctrl->publish(motor_settings.track_left);
     }
 
     std::shared_ptr<rclcpp::Publisher<custom_types::msg::TalonCtrl>> talon_ctrl_pub(rclcpp::Node &parent, const std::string &name) {
@@ -41,7 +42,8 @@ public:
     RobotTeleopInterface(rclcpp::Node &parent) : 
         joy_sub(parent.create_subscription<sensor_msgs::msg::Joy>(
             "joy", 10, [this](const sensor_msgs::msg::Joy &joy) { this->joy = joy; }))
-        , right_track_ctrl(talon_ctrl_pub(parent, "track_right_ctrl"))
+        , track_right_ctrl(talon_ctrl_pub(parent, "track_right_ctrl"))
+        , track_left_ctrl(talon_ctrl_pub(parent, "track_left_ctrl"))
         , teleop_update_timer(
             parent.create_wall_timer(100ms, [this]() { this->update_motors(); }))
         {
@@ -50,7 +52,8 @@ public:
 private:
     std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::Joy>> joy_sub;
     
-    std::shared_ptr<rclcpp::Publisher<custom_types::msg::TalonCtrl>> right_track_ctrl;
+    std::shared_ptr<rclcpp::Publisher<custom_types::msg::TalonCtrl>> track_right_ctrl;
+    std::shared_ptr<rclcpp::Publisher<custom_types::msg::TalonCtrl>> track_left_ctrl;
 
 private:
     sensor_msgs::msg::Joy joy;
@@ -80,12 +83,6 @@ public:
     {
     }
 
-    // void update_motors() {
-    //     MotorSettings motor_settings =
-    //         this->teleop_state.update(this->robot_state, this->joy);
-    //     right_track_ctrl->publish(motor_settings.track_right);
-    // }
-
     ~Controller()
     {
     }
@@ -97,19 +94,8 @@ private:
     std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::Joy>> joy_sub;
     rclcpp::TimerBase::SharedPtr heartbeat_timer;
     rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr heartbeat;
-    rclcpp::Publisher<custom_types::msg::TalonCtrl>::SharedPtr right_track_ctrl;
 
 private:
-    float motor_percent(int value) {
-
-        float percent = (value * 100) / 32767;
-
-        if (percent < 0) {
-            return std::max(percent, (float) -100.0);
-        } else {
-            return std::min(percent, (float) 100.0);
-        }
-    }
 
     bool bot_enabled = true;
     static constexpr auto ENABLE_TIME = 250ms;

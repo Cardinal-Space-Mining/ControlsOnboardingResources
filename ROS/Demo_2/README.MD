@@ -50,6 +50,9 @@ For each motor, there is a subscription service. There also is a timer and a hea
 
 ## Running Program
 Running program can be done in many ways. Only 1 package (robot) could be built and ran on robot, or you can run and build all on both your computer and on the robot for simplicity.
+
+To run code on the robot, you will need to `ssh` into the robot (there may be more depending on CAN device in use).
+
 1. From the `demo2_ws/src` directory run the command `./build.sh` (if you cant run because of permissions, run command `sudo chmod 700 build.sh`)
 2. Once finished building, you will **need 2** terminals on your machine and **1** running on the robot (we will help with this). 
 3. On your machine run `source install/setup.bash` from the `src` directory in both terminals.

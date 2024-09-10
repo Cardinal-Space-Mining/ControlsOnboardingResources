@@ -1,1 +1,1 @@
-colcon build --executor parallel
+colcon build --executor parallel --cmake-args=-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON

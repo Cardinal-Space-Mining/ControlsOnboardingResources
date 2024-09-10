@@ -1,4 +1,4 @@
-#include "control/states.hpp"
+#include "control/ps4_states.hpp"
 #include "control/ps4_map.hpp"
 #include "control/robot_constants.hpp"
 
@@ -18,7 +18,6 @@ MotorSettings TeleopStateMachine::update(const RobotState & robot,
     if(ctrl.buttons[Ps4Mapping::Buttons::CROSS])
     {
         this->set_state(State::Normal, robot);
-        std::cout << "State: Normal" << std::endl;
         return MotorSettings();
     }
 

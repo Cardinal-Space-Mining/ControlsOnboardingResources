@@ -1,17 +1,17 @@
 #include <iostream>
 #include <string>
 
-int isPalindromeHelper(const std::string str, int start, int end) {
+bool isPalindromeHelper(const std::string str, int start, int end) {
     if (start >= end)  
-        return 1;
+        return true;
 
     if (str[start] != str[end])  
-        return 0;
+        return false;
 
     return isPalindromeHelper(str, start + 1, end - 1); 
 }
 
-int isPalindrome(const std::string str) {
+bool isPalindrome(const std::string str) {
     return isPalindromeHelper(str, 0, str.size() - 1); 
 }
 

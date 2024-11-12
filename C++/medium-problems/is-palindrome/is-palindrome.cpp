@@ -3,12 +3,12 @@
 
 // Implement a recursive helper method to go through string str to see if it is a
 // palindrome
-int isPalindromeHelper(const std::string str, int start, int end) {
+bool isPalindromeHelper(const std::string str, int start, int end) {
     
-    return 0; // change this
+    return false; // change this
 }
 
-int isPalindrome(const std::string str) {
+bool isPalindrome(const std::string str) {
     return isPalindromeHelper(str, 0, str.size() - 1); 
 }
 

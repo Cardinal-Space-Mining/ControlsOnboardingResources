@@ -1,10 +1,10 @@
 #include <iostream>
 
-int isPrime(int num) {
+bool isPrime(int num) {
     
     // Implement function
 
-    return 1;
+    return false;
 }
 
 int main() {

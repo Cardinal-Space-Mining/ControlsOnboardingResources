@@ -5,6 +5,8 @@ struct Student {
     std::string name;
     int score;
     char grade;
+
+    Student(std::string name, int score, char grade) : name(name), score(score), grade(grade) {}
 };
 
 char calculateGrade(int score) {
@@ -26,7 +28,7 @@ int main() {
     std::cout << "How many students do you have? ";
     std::cin >> numStudents;
 
-    Student students[numStudents];
+    std::vector<Student> students;
 
     for (; ; ) { // populate initialization, condition, and increment sections
         // Implement loop body to populate students with name, score, and grade

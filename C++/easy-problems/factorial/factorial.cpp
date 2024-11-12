@@ -2,11 +2,10 @@
 
 // Iterative implementation
 int factorial(int n) {
-    int result;
 
     // Implement function
 
-    return result;
+    return 0; // change this
 }
 
 // Recursive implementation
@@ -14,7 +13,7 @@ int factorialR(int n) {
     
     // Implement function
 
-    return 1; // change this
+    return 0; // change this
 }
 
 int main() {

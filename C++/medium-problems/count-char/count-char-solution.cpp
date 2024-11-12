@@ -4,8 +4,7 @@
 void countVowelsConsonants(std::string str) {
     int vowels = 0, consonants = 0;
     
-    int i;
-    for (i = 0; i < str.size(); i++) {
+    for (int i = 0; i < str.size(); i++) {
         char c = str[i];
         
         if (isalpha(c)) {

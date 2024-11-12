@@ -17,8 +17,7 @@ int factorialR(int n) {
 }
 
 int main() {
-    int i;
-    for (i = 0; i <= 12; i++) {
+    for (int i = 0; i <= 12; i++) {
         std::cout << i << ": I: " << factorial(i) << " R: "<< factorialR(i) << std::endl;
     }
     return 0;

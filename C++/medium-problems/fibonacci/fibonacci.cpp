@@ -5,7 +5,7 @@ int fibonacci(int n) {
         return n;
 
     int a = 0, b = 1;
-    int i, result;
+    int result;
 
 // Implement an iterative solution 
     for (; ; ) {

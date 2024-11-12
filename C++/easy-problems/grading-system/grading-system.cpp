@@ -28,8 +28,6 @@ int main() {
 
     Student students[numStudents];
 
-    int i;
-
     for (; ; ) { // populate initialization, condition, and increment sections
         // Implement loop body to populate students with name, score, and grade
     }

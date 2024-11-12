@@ -28,8 +28,6 @@ int main() {
 
     Student students[numStudents];
 
-    int i;
-
     for (int i = 0; i < numStudents; i++) {
         std::cout << "Enter name of student " << i + 1 << ": ";
         std::cin >> students[i].name;
@@ -42,7 +40,7 @@ int main() {
 
     std::cout << "\nStudent Grades:" << std::endl;
 
-    for (i = 0; i < numStudents; i++) {
+    for (int i = 0; i < numStudents; i++) {
         std::cout << students[i].name << ": " << students[i].score << "(" << students[i].grade << ")" << std::endl;
     }
 

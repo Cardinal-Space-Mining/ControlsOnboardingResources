@@ -5,9 +5,9 @@ int fibonacci(int n) {
         return n;
 
     int a = 0, b = 1;
-    int i, result;
+    int result;
 
-    for (i = 2; i <= n; i++) {
+    for (int i = 2; i <= n; i++) {
         result = a + b;
         a = b;
         b = result;

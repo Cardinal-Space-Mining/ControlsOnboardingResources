@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-int isPalindromeHelper(std::string str, int start, int end) {
+int isPalindromeHelper(const std::string str, int start, int end) {
     if (start >= end)  
         return 1;
 
@@ -11,7 +11,7 @@ int isPalindromeHelper(std::string str, int start, int end) {
     return isPalindromeHelper(str, start + 1, end - 1); 
 }
 
-int isPalindrome(std::string str) {
+int isPalindrome(const std::string str) {
     return isPalindromeHelper(str, 0, str.size() - 1); 
 }
 

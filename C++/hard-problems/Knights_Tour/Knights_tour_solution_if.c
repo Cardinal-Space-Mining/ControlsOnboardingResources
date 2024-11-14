@@ -53,10 +53,8 @@ void tour(int32_t x, int32_t y)
 
 int main(int argc, char *argv[])
 {
-  uint32_t i, j;
-
-  for (i = 0; i < BOARD_SIZE; i++) {
-    for (j = 0; j < BOARD_SIZE; j++) {
+  for (uint32_t i = 0; i < BOARD_SIZE; i++) {
+    for (uint32_t j = 0; j < BOARD_SIZE; j++) {
       tour(i, j);
     }    
   }

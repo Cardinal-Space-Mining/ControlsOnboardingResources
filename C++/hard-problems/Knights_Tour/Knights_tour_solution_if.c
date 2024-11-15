@@ -11,13 +11,12 @@ int32_t visited;
 
 void tour(int32_t x, int32_t y)
 {
-  int32_t i;
 
   order[visited++] = index(x, y);
   board[x][y] = visited;
 
   if (visited == (BOARD_SIZE * BOARD_SIZE)) {
-    for (i = 0; i < (BOARD_SIZE * BOARD_SIZE) - 1; i++) {
+    for (int32_t i = 0; i < (BOARD_SIZE * BOARD_SIZE) - 1; i++) {
       printf("%d,", order[i]);
     }
     printf("%d\n", order[24]);
@@ -54,10 +53,8 @@ void tour(int32_t x, int32_t y)
 
 int main(int argc, char *argv[])
 {
-  uint32_t i, j;
-
-  for (i = 0; i < BOARD_SIZE; i++) {
-    for (j = 0; j < BOARD_SIZE; j++) {
+  for (uint32_t i = 0; i < BOARD_SIZE; i++) {
+    for (uint32_t j = 0; j < BOARD_SIZE; j++) {
       tour(i, j);
     }    
   }

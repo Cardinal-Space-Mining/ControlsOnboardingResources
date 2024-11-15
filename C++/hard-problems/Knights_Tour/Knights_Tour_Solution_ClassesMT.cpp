@@ -3,7 +3,7 @@
 #include <algorithm> // std::sort
 #include <cstdlib>   // EXIT_SUCCESS
 
-#include <Knights_Tour_Solution_Classes_Common.hpp>
+#include "Knights_Tour_Solution_Classes_Common.hpp"
 
 int main()
 {

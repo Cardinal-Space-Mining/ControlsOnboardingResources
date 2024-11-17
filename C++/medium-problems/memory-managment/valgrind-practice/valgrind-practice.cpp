@@ -19,12 +19,12 @@ void UseCMemoryAllocation() {
 		return;
 	}
 
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 6; ++i) { // i < 6 instead of 5
 		array[i] = i + 10;
 		std::cout << "array[" << i << "} = " << array[i] << std::endl;
 	}
 
-	free(array);
+//	free(array);
 	std::cout << "Memory allocated with malloc has been freed." <<std::endl;
 }
 
@@ -35,12 +35,12 @@ void UseCPPMemoryAllocation() {
 
 	std::cout << "DataHolder value: " << data_ptr -> val << std::endl;
 
-	delete data_ptr;
+//	delete data_ptr;
 	std::cout << "Memory allocated with new has been deleted." << std::endl;
 
 	DataHolder* data_array = new DataHolder[3]{DataHolder(1), DataHolder(2), DataHolder(3)};
 
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < 4; ++i) { // i < 4 instead of 3
 		std::cout << "DataHolder array[" << i << "] value: " << data_array[i].val << std::endl;
 	}
 

@@ -10,7 +10,6 @@ struct Student {
     Student(std::string name, int score, char grade) : name(name), score(score), grade(grade) {}
 };
 
-
 char calculateGrade(int score) {
     if (score >= 90)
         return 'A';

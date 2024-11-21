@@ -1,55 +1,74 @@
 #include <iostream>
+#include <cstring>
 
-struct DataHolder {
-	int val;
+/*
+Memory leak: dynamically allocated memory is not freed, needs a delete statement
+*/
 
-	DataHolder(int val) : val(val) {}
-	~DataHolder() {
-		std::cout << "DataHolder with value " << val << " is being destroyed" << std::endl;
-	}
-};
-
-void UseCMemoryAllocation() {
-	std::cout << "Using C-style memory allocation (malloc and free):" << std::endl;
-
-	int* array = (int*)malloc(5 * sizeof(int));
-	
-	if (array == nullptr) {
-		std::cerr << "Memory allocation failed." << std::endl;
-		return;
-	}
-
-	for (int i = 0; i < 6; ++i) { // i < 6 instead of 5
-		array[i] = i + 10;
-		std::cout << "array[" << i << "} = " << array[i] << std::endl;
-	}
-
-//	free(array);
-	std::cout << "Memory allocated with malloc has been freed." <<std::endl;
+void memoryLeak() {
+	int* leakyArray = new int[10];
 }
 
-void UseCPPMemoryAllocation() {
-	std::cout << "\nUsing C++-style memory allocation (new and delete):" << std::endl;
+/*
+Invalid memory access: writing out of bounds
+*/
+void invalidMemoryAccess() {
+	int* arr = new int[10];
+	arr[10] = 42;
+	delete[] arr;
+}
 
-	DataHolder* data_ptr = new DataHolder(2);
+/*
+Use of uninitialized variable
+*/
+void uninitializedVariable() {
+	int var;
+	std::cout << "Uninitialized variable output: " << var << std::endl;
+}
 
-	std::cout << "DataHolder value: " << data_ptr -> val << std::endl;
+/*
+Tries to delete the same memory twice
+*/
+void doubleDelete() {
+	int* var = new int(5);
+	delete var;
+	delete var;
+}
 
-//	delete data_ptr;
-	std::cout << "Memory allocated with new has been deleted." << std::endl;
+/*
+Poiter overwrite without freeing original allocation
+*/
+void pointerOverwriteWithoutFreeing() {
+	char* ptr = new char[10]; // C-style string allocation
+	std::strcpy(ptr, "Hello");
+	std::cout << "ptr: " << ptr << std::endl;
+	delete[] ptr;
+	
+	ptr = new char[20];
+	
+	std::cout << "ptr: " << ptr << std::endl;
 
-	DataHolder* data_array = new DataHolder[3]{DataHolder(1), DataHolder(2), DataHolder(3)};
+	delete[] ptr;
+}
 
-	for (int i = 0; i < 4; ++i) { // i < 4 instead of 3
-		std::cout << "DataHolder array[" << i << "] value: " << data_array[i].val << std::endl;
+/*
+
+*/
+void danglingPointer() {
+	int* ptr;
+	{
+		int localVar = 99;
+		ptr = &localVar;
 	}
-
-	delete[] data_array;
-	std::cout << "Array allocated with new[] has been deleted." << std::endl;
+	std::cout << "Dangling pointer value: " << *ptr	<< std::endl;
 }
 
 int main() {
-	UseCMemoryAllocation();
-	UseCPPMemoryAllocation();
+	memoryLeak();
+	invalidMemoryAccess();
+	uninitializedVariable();
+	doubleDelete();
+	pointerOverwriteWithoutFreeing();
+	danglingPointer();
 	return 0;
 }

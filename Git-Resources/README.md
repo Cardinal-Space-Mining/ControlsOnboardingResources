@@ -79,3 +79,80 @@ nothing to commit (create/copy files and use "git add" to track)
 ```
 
 ## Managing Your Git Repository
+
+Now that we have a git repository, now lets add some stuff to it!
+
+### Adding Files
+
+We can create files with the terminal command `touch`. Lets create a new file:
+
+```
+touch my-first-file.txt
+```
+
+Now if we do a `git status` we will see the following:
+
+```
+name@device:my-first-repo$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	my-first-file.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+We can now add this file with the following git command:
+
+```
+git add my-first-file.txt
+```
+
+After adding the file, the `git status` should output something simular to this:
+
+```
+name@device:my-first-repo$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   my-first-file.txt
+
+```
+
+### Removing Files
+
+Egad! I did not want to stage that file!  
+
+To unstage a file, you use the following command:
+```
+git rm --cached my-first-file.txt
+```
+
+### Commiting Files
+
+What is a commit? 
+
+A Git commit is a snapshot of changes made to the files in a repository at a specific point in time. It represents a version of the project, allowing you to track, save, and manage the project's history.
+
+Let us re-add the file with `git add`. After making sure that the file is is staged with `git status`, we are ready to commit our changes. To do this, we use the following command:
+
+```
+git commit -m "my first commit"
+```
+
+When we are making a commit we have to leave a message with the `-m` flag as well as a message in `"`s.  
+
+The output of the commit should be simular to the following:
+
+```
+name@device:my-first-repo$ git commit -m "my first commit"
+[main (root-commit) 61723e7] my first commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 my-first-file.txt
+```

@@ -27,7 +27,8 @@ sudo apt install git-all
 After getting git, you now are able to create a git repository. To do this open the terminal, with Ubuntu you can do this with the keyboard shortcut `Ctrl+Shift+T`. Now that you have opened the terminal, use the following command to view the contents of your home directory witht the terminal command `ls`. The terminal should output something simular to this:
 
 ```
-THIS NEEDS TO BE UPDATED, DO NOT FORGET TO UPDATE THIS
+name@device-name:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  snap  Templates  Videos
 ```
 
 we will create a `Code` directory with the following command:
@@ -70,7 +71,7 @@ git status
 
 It should output somthing simular to the following:
 ```
-name@device:my-first-repo$ git status
+name@device-name:~/Code/my-frist-repo$ git status
 On branch main
 
 No commits yet
@@ -93,7 +94,7 @@ touch my-first-file.txt
 Now if we do a `git status` we will see the following:
 
 ```
-name@device:my-first-repo$ git status
+name@device-name:~/Code/my-frist-repo$ git status
 On branch main
 
 No commits yet
@@ -114,7 +115,7 @@ git add my-first-file.txt
 After adding the file, the `git status` should output something simular to this:
 
 ```
-name@device:my-first-repo$ git status
+name@device-name:~/Code/my-frist-repo$ git status
 On branch main
 
 No commits yet
@@ -151,7 +152,7 @@ When we are making a commit we have to leave a message with the `-m` flag as wel
 The output of the commit should be simular to the following:
 
 ```
-name@device:my-first-repo$ git commit -m "my first commit"
+name@device-name:~/Code/my-frist-repo$ git commit -m "my first commit" 
 [main (root-commit) 61723e7] my first commit
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 my-first-file.txt

@@ -136,7 +136,7 @@ To unstage a file, you use the following command:
 git rm --cached my-first-file.txt
 ```
 
-### Commiting Files
+### Committing Files
 
 What is a commit? 
 
@@ -213,4 +213,44 @@ Cloning into 'remote-repo'...
 warning: You appear to have cloned an empty repository.
 ```
 
-Congrats! We now have a cloned (empty) repository.
+Congrats! We now have a cloned (empty) repository. 
+
+#### Step 3: Adding Files to Your Remote repository
+
+This is going to be very simular to adding files with the same commands from earlier: `git add` and `git commit` but we will have another step; pushing the code to the repository with the `git push` command.
+
+After adding and committing your files it should have a output simular to this when you perform a `git status`:
+
+```
+name@device-name:~/Code/remote-repo$ git status
+On branch main
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+
+```
+
+You should now be able to push your code with the `git push` command. If you successfully push your code, it should have an output simular to this:
+
+```
+name@device-name:~/Code/remote-repo$ git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 240 bytes | 240.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:johndoe/remote-repo.git
+ * [new branch]      main -> main
+```
+
+After the push, if you do a followup `git status`, it should output something simular to this.
+
+```
+name@device-name:~/Code/remote-repo$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+Now that we have successfully pushed our code to the remote repository we will be able to see the code on GitHub.

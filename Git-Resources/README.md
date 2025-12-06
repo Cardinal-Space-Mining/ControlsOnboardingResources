@@ -13,6 +13,9 @@ This directory aims to get new git users familiar with using the version control
 - Cloning remote git repositories
 - Using a remote repository
 
+## Game to learn Git
+https://learngitbranching.js.org
+
 ## Getting Started With Git
 
 If you have followed the [Evironment Setup](https://github.com/Cardinal-Space-Mining/CSMWiki/tree/main/EnviromentSetup) steps then you should have git installed, if you have yet to complete the environment setup you can use the following linux terminal command (requires Ubuntu):
